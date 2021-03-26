@@ -23,7 +23,17 @@ namespace Mediff_Test
                     sw = new StreamWriter(path + "\\log.txt");
                     sw.WriteLine("Owner Information");
                     Owners owners = new Owners();
-                    owners.Add(sw,null);//please pass the dictionary
+                    Console.WriteLine("Enter number of names");
+                    int v = Convert.ToInt32(Console.ReadLine());
+                    Dictionary<string, string> ownersdic = new Dictionary<string, string>(); ;
+                    for(int i=0;i<n;i++)
+                    {
+                        Console.WriteLine("Enter the name with fileName Ex:-> praveen,praveen.txt ");
+                        string filename= Console.ReadLine();
+                        string[] p = filename.Split(',');
+                        ownersdic.Add(p[1], p[0]);
+                    }
+                    owners.Add(sw, ownersdic);//please pass the dictionary
                     Dictionary<string, List<string>> groupdic = owners.Group_By_Owners();
                     sw.WriteLine("Owner Information Group by fetched \t" + groupdic.Count);
                     foreach (string name in groupdic.Keys)
